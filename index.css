@@ -5,8 +5,8 @@ body {
     box-sizing: border-box;
     font-family: 'DM Sans', sans-serif;
     display: flex;
-    align-items :center;
-    justify-content:flex-start;
+    align-items: center;
+    justify-content: flex-start;
     min-height: 100svh;
     user-select: none;
     background-color: #e8f1f5;
@@ -25,7 +25,11 @@ main {
 
 footer {
     flex-shrink: 0;
-    position: fixed;
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 25px;
+    bottom: calc(env(safe-area-inset-bottom) + 10px);
     padding: 1rem 2rem;
     color: #08334dc9;
     font-size: 14px;
@@ -45,7 +49,8 @@ footer a {
     margin-bottom: 1.5rem;
 }
 
-input, button {
+input,
+button {
     padding: 0.8rem 0;
     border-radius: 0.6rem;
     width: 100%;
@@ -75,7 +80,7 @@ input[type="text"]:focus {
     color: #FDFDFD;
     background-color: #1363DF;
     border: none;
-    width: 50%;  
+    width: 50%;
     cursor: pointer;
     font-size: 20px;
     transition: all 0.2s;
@@ -91,7 +96,7 @@ input[type="text"]:focus {
     color: #1363DF;
     background-color: transparent;
     border: 2px solid #1363DF;
-    width: 50%;  
+    width: 50%;
     cursor: pointer;
     font-size: 20px;
     transition: all 0.2s;
