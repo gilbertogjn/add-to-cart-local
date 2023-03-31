@@ -7,7 +7,7 @@ body {
     display: flex;
     align-items :center;
     justify-content:flex-start;
-    height: 100vh;
+    min-height: -webkit-fill-available;
     user-select: none;
     background-color: #e8f1f5;
 }
@@ -100,8 +100,7 @@ input[type="text"]:focus {
 }
 
 #clear-button:hover {
-    background-color: #D4213C;
-    color: #fff;
+    color: #D4213C;
     border-color: #D4213C;
 }
 
