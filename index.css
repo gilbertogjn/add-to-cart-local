@@ -7,7 +7,7 @@ body {
     display: flex;
     align-items :center;
     justify-content:flex-start;
-    min-height: -webkit-fill-available;
+    min-height: 100svh;
     user-select: none;
     background-color: #e8f1f5;
 }
