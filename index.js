@@ -5,34 +5,38 @@ const shoppingListEl = document.getElementById('shopping-list')
 
 getItemsFromLocalStorage()
 
-let lastId = 0
+addButtonEl.addEventListener('click', addItemOnLocalStorage)
+inputFieldEl.addEventListener('keypress', function handleKeyPress(event) {
+    if(event.key === 'Enter') {
+        addItemOnLocalStorage()
+    }
+})
 
-addButtonEl.addEventListener('click', function () {
+
+function addItemOnLocalStorage() {
     let inputValue = inputFieldEl.value
+    let Id = createGuid()
 
     if (inputFieldEl.value !== "") {
-        lastId++
-        localStorage.setItem(lastId, inputValue)
+        localStorage.setItem(Id, inputValue)
     }
 
     getItemsFromLocalStorage()
     emptyInput()
-
-    return lastId
-})
+}
 
 clearButtonEl.addEventListener('click', function () {
     localStorage.clear()
     getItemsFromLocalStorage()
-    return lastId = 0
 })
 
 function getItemsFromLocalStorage() {
     clearShoppingListEl()
     let items = Object.entries({ ...localStorage })
+    sortArray(items)
     console.log(items)
     for (let i = 0; i < items.length; i++) {
-        addItem(items[i])
+        addItemEl(items[i])
     }
 }
 
@@ -44,7 +48,7 @@ function clearShoppingListEl() {
     shoppingListEl.innerHTML = ""
 }
 
-function addItem(item) {
+function addItemEl(item) {
     const itemID = item[0]
     const itemValue = item[1]
 
@@ -59,4 +63,28 @@ function removeItem(itemEl, itemID) {
         localStorage.removeItem(itemID)
         getItemsFromLocalStorage()
     })
+}
+
+function createGuid() {
+    function s4() {
+        return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
+    }
+    return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
+}
+
+
+function sortArray(array) {
+    array.sort(function (a, b) {
+        const valueA = a[1].toLowerCase()
+        const valueB = b[1].toLowerCase()
+        if (valueA < valueB) {
+            return -1
+        }
+        if (valueA > valueB) {
+            return 1
+        }
+        return 0
+    })
+    console.log(array)
+    return array
 }
