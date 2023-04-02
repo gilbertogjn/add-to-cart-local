@@ -12,10 +12,9 @@ inputFieldEl.addEventListener('keypress', function handleKeyPress(event) {
     }
 })
 
-
 function addItemOnLocalStorage() {
     let inputValue = inputFieldEl.value
-    let Id = createGuid()
+    let Id = nextId()
 
     if (inputFieldEl.value !== "") {
         localStorage.setItem(Id, inputValue)
@@ -33,7 +32,6 @@ clearButtonEl.addEventListener('click', function () {
 function getItemsFromLocalStorage() {
     clearShoppingListEl()
     let items = Object.entries({ ...localStorage })
-    sortArray(items)
     console.log(items)
     for (let i = 0; i < items.length; i++) {
         addItemEl(items[i])
@@ -65,6 +63,20 @@ function removeItem(itemEl, itemID) {
     })
 }
 
+let lastId = 0
+
+function nextId() {
+    lastId++
+    return lastId
+}
+
+window.onload = function() {
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("/service-worker.js");
+    }
+  };
+
+/*
 function createGuid() {
     function s4() {
         return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
@@ -88,3 +100,4 @@ function sortArray(array) {
     console.log(array)
     return array
 }
+*/
