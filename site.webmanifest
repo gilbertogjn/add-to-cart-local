@@ -1,20 +1,23 @@
 {
-    "name": "",
-    "short_name": "",
+    "name": "Lista de Compras",
+    "short_name": "lista-compras",
     "icons": [
         {
-            "src": "/android-chrome-192x192.png",
+            "src": "/img/favicon/android-chrome-192x192.png",
             "sizes": "192x192",
-            "type": "image/png"
+            "type": "image/png",
+            "purpose": "any maskable"
         },
         {
-            "src": "/android-chrome-512x512.png",
+            "src": "/img/favicon/android-chrome-512x512.png",
             "sizes": "512x512",
-            "type": "image/png"
+            "type": "image/png",
+            "purpose": "any maskable"
         }
     ],
-    "theme_color": "#e8f1f5",
+    "theme_color": "#1363DF",
     "background_color": "#e8f1f5",
-    "display": "fullscreen",
+    "start_url": "/index.html",
+    "display": "standalone",
     "orientation": "portrait"
 }

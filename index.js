@@ -75,29 +75,3 @@ window.onload = function() {
       navigator.serviceWorker.register("/service-worker.js");
     }
   };
-
-/*
-function createGuid() {
-    function s4() {
-        return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
-    }
-    return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
-}
-
-
-function sortArray(array) {
-    array.sort(function (a, b) {
-        const valueA = a[1].toLowerCase()
-        const valueB = b[1].toLowerCase()
-        if (valueA < valueB) {
-            return -1
-        }
-        if (valueA > valueB) {
-            return 1
-        }
-        return 0
-    })
-    console.log(array)
-    return array
-}
-*/
