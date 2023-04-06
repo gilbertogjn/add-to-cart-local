@@ -76,7 +76,7 @@ window.onload = function () {
     }
 }
 
-
+/*
 //Install PWA Prompt
 let deferredPrompt
 let setupButton
@@ -106,3 +106,4 @@ function installApp() {
             deferredPrompt = null
         })
 }
+*/

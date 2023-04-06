@@ -133,6 +133,7 @@ ul li {
     transition: all 0.2s;
     font-size: 20px;
     text-transform: capitalize;
+    animation: append-animate .2s linear;
 }
 
 ul li:hover {
@@ -141,4 +142,15 @@ ul li:hover {
 
 #install-button {
     display: none;
+}
+
+@keyframes append-animate {
+	from {
+		margin-top: 1rem;
+		opacity: 0;
+	}
+	to {
+		margin-top: 0;
+		opacity: 1;	
+	}
 }
