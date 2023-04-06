@@ -138,3 +138,7 @@ ul li {
 ul li:hover {
     background-color: #DFF6FF;
 }
+
+#install-button {
+    display: none;
+}
