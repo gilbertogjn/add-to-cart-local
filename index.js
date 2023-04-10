@@ -2,8 +2,10 @@ const inputFieldEl = document.getElementById('input-field')
 const addButtonEl = document.getElementById('add-button')
 const clearButtonEl = document.getElementById('clear-button')
 const shoppingListEl = document.getElementById('shopping-list')
+const logoEl = document.getElementById('logo')
 
 getItemsFromLocalStorage()
+animateLogo()
 
 addButtonEl.addEventListener('click', addItemOnLocalStorage)
 inputFieldEl.addEventListener('keypress', function handleKeyPress(event) {
@@ -22,11 +24,13 @@ function addItemOnLocalStorage() {
 
     getItemsFromLocalStorage()
     emptyInput()
+    animateLogo()
 }
 
 clearButtonEl.addEventListener('click', function () {
     localStorage.clear()
     getItemsFromLocalStorage()
+    animateLogo()
 })
 
 function getItemsFromLocalStorage() {
@@ -58,8 +62,14 @@ function addItemEl(item) {
 
 function removeItem(itemEl, itemID) {
     itemEl.addEventListener("click", function () {
-        localStorage.removeItem(itemID)
-        getItemsFromLocalStorage()
+        if (localStorage.length == 1) {
+            localStorage.removeItem(itemID)
+            getItemsFromLocalStorage()
+            animateLogo()
+        } else {
+            localStorage.removeItem(itemID)
+            getItemsFromLocalStorage()
+        }
     })
 }
 
@@ -73,6 +83,15 @@ function nextId() {
 window.onload = function () {
     if ("serviceWorker" in navigator) {
         navigator.serviceWorker.register("/service-worker.js")
+    }
+}
+
+function animateLogo() {
+    let items = Object.entries({ ...localStorage })
+    if (items.length != 0) {
+        logoEl.classList.add('animate-logo')
+    } else {
+        logoEl.classList.remove('animate-logo')
     }
 }
 
