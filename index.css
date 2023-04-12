@@ -147,11 +147,11 @@ ul li:hover {
 
 @keyframes append-animate {
 	from {
-		margin-top: 1rem;
+		margin-right: 2rem;
 		opacity: 0;
 	}
 	to {
-		margin-top: 0;
+		margin-right: 0;
 		opacity: 1;
 	}
 }

@@ -5,7 +5,6 @@ const shoppingListEl = document.getElementById('shopping-list')
 const logoEl = document.getElementById('logo')
 
 getItemsFromLocalStorage()
-animateLogo()
 
 addButtonEl.addEventListener('click', addItemOnLocalStorage)
 inputFieldEl.addEventListener('keypress', function handleKeyPress(event) {
@@ -16,21 +15,19 @@ inputFieldEl.addEventListener('keypress', function handleKeyPress(event) {
 
 function addItemOnLocalStorage() {
     let inputValue = inputFieldEl.value
-    let Id = nextId()
+    let id = nextId()
 
     if (inputFieldEl.value !== "") {
-        localStorage.setItem(Id, inputValue)
+        localStorage.setItem(id, inputValue)
+        addItemEl(id, inputValue)
     }
 
-    getItemsFromLocalStorage()
     emptyInput()
-    animateLogo()
 }
 
 clearButtonEl.addEventListener('click', function () {
     localStorage.clear()
     getItemsFromLocalStorage()
-    animateLogo()
 })
 
 function getItemsFromLocalStorage() {
@@ -50,26 +47,30 @@ function clearShoppingListEl() {
     shoppingListEl.innerHTML = ""
 }
 
-function addItemEl(item) {
-    const itemID = item[0]
-    const itemValue = item[1]
+function addItemEl(id, itemValue) {
 
     let newEl = document.createElement('li')
     newEl.textContent = itemValue
-    shoppingListEl.append(newEl)
-    removeItem(newEl, itemID)
+
+    let list = []
+    for(let i = 0; i < shoppingListEl.children.length; i++) {
+        list.push(shoppingListEl.children[i].textContent)
+    }
+    
+    console.log('lista ' + list)
+
+    if(list.includes(itemValue) == false) {
+        shoppingListEl.append(newEl)
+    }
+
+    //Passa o elemento e o id para a função removeItem
+    removeItem(newEl, id)
 }
 
 function removeItem(itemEl, itemID) {
     itemEl.addEventListener("click", function () {
-        if (localStorage.length == 1) {
-            localStorage.removeItem(itemID)
-            getItemsFromLocalStorage()
-            animateLogo()
-        } else {
-            localStorage.removeItem(itemID)
-            getItemsFromLocalStorage()
-        }
+        localStorage.removeItem(itemID)
+        itemEl.remove()
     })
 }
 
@@ -86,14 +87,15 @@ window.onload = function () {
     }
 }
 
-function animateLogo() {
-    let items = Object.entries({ ...localStorage })
-    if (items.length != 0) {
-        logoEl.classList.add('animate-logo')
-    } else {
-        logoEl.classList.remove('animate-logo')
-    }
-}
+inputFieldEl.addEventListener('focus', function () {
+    logoEl.classList.add('animate-logo')
+})
+
+inputFieldEl.addEventListener('blur', function () {
+    logoEl.classList.remove('animate-logo')
+})
+
+
 
 /*
 //Install PWA Prompt
