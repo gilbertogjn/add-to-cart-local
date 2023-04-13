@@ -13,7 +13,7 @@ body {
     justify-content: flex-start;
     height: 100%;
     user-select: none;
-    background-color: #bedae6;
+    background-color: #e8f1f5;
 }
 
 main {
@@ -137,6 +137,10 @@ ul li {
     animation: append-animate .2s linear;
 }
 
+ul li::before {
+    animation: remove-animate .2s forwards;
+}
+
 ul li:hover {
     background-color: #DFF6FF;
 }
@@ -153,6 +157,17 @@ ul li:hover {
 	to {
 		margin-right: 0;
 		opacity: 1;
+	}
+}
+
+@keyframes remove-animate {
+	from {
+		margin-right: 0rem;
+		opacity: 1;
+	}
+	to {
+		margin-right: 2rem;
+		opacity: 0;
 	}
 }
 
