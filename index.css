@@ -137,7 +137,7 @@ ul li {
     animation: append-animate .2s linear;
 }
 
-ul li::before {
+.remove-item {
     animation: remove-animate .2s forwards;
 }
 
@@ -151,7 +151,7 @@ ul li:hover {
 
 @keyframes append-animate {
 	from {
-		margin-right: 2rem;
+		margin-right: -2rem;
 		opacity: 0;
 	}
 	to {
@@ -174,4 +174,17 @@ ul li:hover {
 .animate-logo {
     opacity: 0;
     margin-top: -130px!important;
+}
+
+#clear-popup {
+    position: absolute;
+    top: calc(50% - 100px);
+    background-color: #f3f7f8;
+    border-radius: 1rem;
+    padding: 2rem;
+    display: none;
+}
+
+#clear-popup button {
+    flex-grow: 1;
 }

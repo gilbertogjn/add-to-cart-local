@@ -70,7 +70,8 @@ function addItemEl(id, itemValue) {
 function removeItem(itemEl, itemID) {
     itemEl.addEventListener("click", function () {
         localStorage.removeItem(itemID)
-        setTimeout(itemEl.remove(), 2000)
+        itemEl.classList.add('remove-item')
+        setInterval(() => { itemEl.remove() } , 200)
     })
 }
 
