@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Aplicativo PWA de lista de compras.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#e8f1f5">
+    <meta name="theme-color" content="#bedae6">
     <title>Lista de Compras</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,13 +31,22 @@
         </div>
         <ul id="shopping-list"></ul>
     </main>
-    <div id="clear-popup">
-        <p>Deseja limpar a lista?</p>
-        <button id="clear-yes">Sim</button>
-        <button id="clear-no">Não</button>
+    <div id="bg-clear-popup">
+        <div id="clear-popup">
+            <p>Deseja limpar a lista?</p>
+            <span id="clear-buttons">
+                <button id="clear-yes">Sim</button>
+                <button id="clear-no">Não</button>
+            </span>
+        </div>
     </div>
     <footer>
-        Desenvolvido por&nbsp;<a href="https://lunawd.com/" target="_blank">Gilberto Garcia/Luna WD.</a></footer>
+        <p>
+            Desenvolvido por
+            <a href="https://lunawd.com/" target="_blank">
+                Gilberto Garcia/Luna WD.
+            </a>
+        </p>
     </footer>
     <!--<button id="install-button" onclick="installApp()">Instalar</button> -->
     <script src="index.js" type="module"></script>

@@ -1,5 +1,6 @@
 html {
     height: 100%;
+    user-select: none;
 }
 
 body {
@@ -56,16 +57,18 @@ button {
     padding: 0.8rem 0;
     border-radius: 0.6rem;
     width: 100%;
+    font-family: 'DM Sans', sans-serif;
 }
 
 input[type="text"] {
     background-color: #d6e8f0;
     color: #08324d;
-    border: none;
+
     text-align: center;
     margin-bottom: 0.7rem;
     font-size: 20px;
     border: 2px solid #ccdbe2;
+    font-family: 'DM Sans', sans-serif;
 }
 
 input[type="text"]:focus {
@@ -176,15 +179,88 @@ ul li:hover {
     margin-top: -130px!important;
 }
 
+#bg-clear-popup {
+    position: absolute;
+    height: 100vh;
+    width: 100%;
+    background-color: #000000b2;
+    display: none;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+.remove {
+    animation: fadeOut 0.5s!important;
+}
+
+.show {
+    display: flex!important;
+    animation: fadeIn 0.2s;
+}
+
 #clear-popup {
+    width: 260px;
+    height: 80px;
     position: absolute;
     top: calc(50% - 100px);
+    right: calc(50% - 163px);
     background-color: #f3f7f8;
     border-radius: 1rem;
     padding: 2rem;
-    display: none;
+    display: flex;
+    flex-direction: column;
+    font-size: 18px;
+    justify-content: center;
+    color: #0d4d75;
+    z-index: 100;
+}
+
+#clear-popup p {
+    margin: 0 0 1rem 0;
+    text-align: center;
 }
 
 #clear-popup button {
     flex-grow: 1;
+}
+
+#clear-buttons {
+    display: flex;
+    gap: 0.5rem;
+}
+
+#clear-yes, #clear-no {
+    background-color: #00000000;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 18px;
+    transition: all 0.2s ease;
+}
+
+#clear-no {    
+    color: #1363DF;
+    border: 2px solid #1363DF;
+}
+
+#clear-no:hover {
+    background-color: #1363DF;
+    color: #DFF6FF;
+}
+
+#clear-yes {
+    color: #D4213C;
+    border: 2px solid #D4213C;
+}
+
+#clear-yes:hover {
+    background-color: #D4213C;
+    color: #DFF6FF;
 }

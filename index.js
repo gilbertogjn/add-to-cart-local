@@ -1,6 +1,10 @@
 const inputFieldEl = document.getElementById('input-field')
 const addButtonEl = document.getElementById('add-button')
+const clearBgEl = document.getElementById('bg-clear-popup')
+const clearYesEl = document.getElementById('clear-yes')
+const clearNoEl = document.getElementById('clear-no')
 const clearButtonEl = document.getElementById('clear-button')
+const clearPopupEl = document.getElementById('bg-clear-popup')
 const shoppingListEl = document.getElementById('shopping-list')
 const logoEl = document.getElementById('logo')
 
@@ -25,9 +29,26 @@ function addItemOnLocalStorage() {
     emptyInput()
 }
 
-clearButtonEl.addEventListener('click', function () {
+clearButtonEl.addEventListener('click', function() {
+    clearPopupEl.classList.add('show')
+})
+
+clearYesEl.addEventListener('click', function () {
     localStorage.clear()
     getItemsFromLocalStorage()
+    clearPopupEl.classList.add('remove')
+    setTimeout(() => {
+        clearPopupEl.classList.remove('remove')
+        clearPopupEl.classList.remove('show')
+    }, 200)
+})
+
+clearNoEl.addEventListener('click', function() {
+    clearPopupEl.classList.add('remove')
+    setTimeout(() => {
+        clearPopupEl.classList.remove('remove')
+        clearPopupEl.classList.remove('show')
+    }, 200)
 })
 
 function getItemsFromLocalStorage() {
