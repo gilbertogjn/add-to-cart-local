@@ -8,7 +8,9 @@ const clearPopupEl = document.getElementById('bg-clear-popup')
 const shoppingListEl = document.getElementById('shopping-list')
 const logoEl = document.getElementById('logo')
 
-getItemsFromLocalStorage()
+document.addEventListener("DOMContentLoaded", function(event) {
+    getItemsFromLocalStorage()
+})
 
 addButtonEl.addEventListener('click', addItemOnLocalStorage)
 inputFieldEl.addEventListener('keypress', function handleKeyPress(event) {
@@ -23,7 +25,8 @@ function addItemOnLocalStorage() {
 
     if (inputFieldEl.value !== "") {
         localStorage.setItem(id, inputValue)
-        addItemEl(id, inputValue)
+        let itemArray = [id, inputValue]
+        addItemEl(itemArray)
     }
 
     emptyInput()
@@ -68,8 +71,10 @@ function clearShoppingListEl() {
     shoppingListEl.innerHTML = ""
 }
 
-function addItemEl(id, itemValue) {
-
+function addItemEl(item) {
+    let id = item[0]
+    let itemValue = item[1]
+    
     let newEl = document.createElement('li')
     newEl.textContent = itemValue
 
